@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+ <html>
+ <head>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="https://cdn.jsdelivr.net/gh/rectanius/bokuost@master/default.css" />
+ <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+ <style>
+body{
+  font-family: Arial;
+}
+ .season {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar; 
+  }
+  .item {
+   flex: 0 0 auto; 
+ }
+ .scroll {
+   display: flex;
+   flex-wrap: nowrap;
+   overflow: auto;
+   -webkit-overflow-scrolling: touch;
+   -ms-overflow-style: -ms-autohiding-scrollbar;
+ }
+ .scroll ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+ }
+ .flex {
+   display: flex;
+   flex-wrap: nowrap;
+ }
+ .nav-item {
+   flex: 0 0 auto;
+ }
+ header {
+  background-color: #fafafa;
+ }
+ .nav-item {
+   padding: 13px 16px 12px;
+   cursor:pointer;
+ }
+ .nav-item:hover{
+   background: linear-gradient(45deg, #23A6D5, #23D5AB);
+ }
+  .nav-item:hover .sttl{
+   color: #fff;
+  }
+ .nav-item img{
+   max-height: 300px;
+ }
+ * {
+   box-sizing: border-box;
+ }
+ .nav-item {
+   font-size: 14px;
+   flex: 0;
+ }
+ .sttl{
+   width: 100%;
+   font-size: 15px;
+   color: #23A6D5;
+   text-align:center;
+   min-height: 50px;
+   max-height: 50px;
+   overflow: hidden;
+   line-height: 1.6;
+   font-weight: 700;
+   margin-bottom: 5px;
+ }
+ 
+ #sinp{
+ background-image: url('https://www.w3schools.com/css/searchicon.png');
+ background-position: 10px 12px;
+ background-repeat: no-repeat;
+ width: 50%;
+ font-size: 16px;
+ padding: 12px 20px 12px 40px;
+ border: 4px solid #2E86C1;
+ border-radius: 6px;
+ margin: 20px 0 12px 0;
+ -webkit-transition: width .35s ease-in-out;
+ transition: width .35s ease-in-out;
+ clear: both;
+ }
+ #sinp:focus {
+ width: 100%;
+ }
+/* width */
+::-webkit-scrollbar {
+width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+background: #64B5F6;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+background: #42A5F5;
+}
+.seasel, .seacli{
+  float:left;
+  color: black;
+  background: #42A5F5;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 14px;
+  font-size: 17px;
+  width: 25%;
+  text-align: center;
+  font-weight: 700;
+  display: inline-block;
+  }
+.seatab{
+  background-color: #f2f3f6;
+  padding: 20px;
+  display: none;
+}
+.seacon{
+  display: none;
+  background-color: #fafafa;
+  padding-top: 5px;
+}
+ @media screen and (max-width:1024px){
+ #sinp{width:55%;}
+}
+ @media screen and (max-width:800px){
+ #sinp{width:65%;}
+ .nav-item img{max-height: 230px;}
+ .sttl{font-size: 14px;line-height: 1.25;}
+ }
+ @media screen and (max-width:640px){
+ #sinp{width:80%;}
+.seasel, .seacli{
+width: 50%;
+margin: none;
+  }
+ }
+ @media screen and (max-width:480px){
+ #sinp{width:100%;}
+ .nav-item img{max-height: 150px;}
+ .sttl{font-size: 10px;line-height: 1.15;margin: none;min-height: 35px;max-height: 35px;}
+ }
+.clear {
+clear:both;
+}
+ @media screen and (max-width:320px){
+ #sinp{width:100%;}
+ }
+ </style>
+ </head>
+ <body>
+  <div id="defsea" class="seasel" onclick="sea('horiz', this, '#f2f3f6')">New</div>
+  <div class="seasel" onclick="sea('list', this, '#f2f3f6')">Continuing</div>
+  <div class="clear"></div>
+<div class="seatab" id="horiz">
+ <input type="text" id="sinp" onkeyup="filter()" placeholder="Search for names.." title="Type in a name"></input><br />
+ <div class='seacli' onclick="cal('new', this, '#fafafa')" id="defnew">New</div>
+ <div class='seacli' onclick="cal('continue', this, '#fafafa')">Continuing</div>
+ <div class="clear"></div>
+ <div class="season">
+   <header class="scroll">
+    <div class='seacon' id='new'>
+     <ul class="flex" id='slist'>
+  <li class="nav-item"><div class='sttl'>Boku no Academia 4th Season</div><img src='https://cdn.myanimelist.net/images/anime/1315/102961l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Sword Art Online: Alicization - War of Underworld</div><img src='https://cdn.myanimelist.net/images/anime/1630/103417l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Nanatsu no Taizai: Kamigami no Gekirin</div><img src='https://cdn.myanimelist.net/images/anime/1546/103418l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Shokugeki no Souma: Shin no Sara</div><img src='https://cdn.myanimelist.net/images/anime/1258/102849l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Shinchou Yuusha: Kono Yuusha ga Ore Tueee Kuse ni Shinchou Sugiru</div><img src='https://cdn.myanimelist.net/images/anime/1715/103419l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Ore wo Suki nano wa Omae dake ka yo</div><img src='https://cdn.myanimelist.net/images/anime/1201/103568l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Assassins Pride</div><img src='https://cdn.myanimelist.net/images/anime/1267/103421l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Psycho-Pass 3</div><img src='https://cdn.myanimelist.net/images/anime/1406/104344l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Beastars</div><img src='https://cdn.myanimelist.net/images/anime/1234/102008l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>No Guns Life</div><img src='https://cdn.myanimelist.net/images/anime/1531/102113l.jpg'/></li>
+  <li class="nav-item"><div class='sttl'>Hataage! Kemono Michi</div><img src='https://cdn.myanimelist.net/images/anime/1736/103512l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Fate/Grand Order: Zettai Majuu Sensen Babylonia</div><img src='https://cdn.myanimelist.net/images/anime/1194/103420l.jpg'/></li>
+   <li class="nav-item"><div class='sttl' alt='choyoyu'>Choujin Koukousei-tachi wa Isekai demo Yoyuu de Ikinuku you desu!</div><img src='https://cdn.myanimelist.net/images/anime/1859/103422l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Bokutachi wa Benkyou ga Dekinai!</div><img src='https://cdn.myanimelist.net/images/anime/1974/102960l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Azur Lane</div><img src='https://cdn.myanimelist.net/images/anime/1957/102383l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Watashi, Nouryoku wa Heikinchi de tte Itta yo ne!</div><img src='https://cdn.myanimelist.net/images/anime/1858/102811l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Hoshiai no Sora</div><img src='https://cdn.myanimelist.net/images/anime/1807/103081l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>AAA</div><img src='AAA'/></li>
+   <li class="nav-item"><div class='sttl'>AAA</div><img src='AAA'/></li>
+     </ul>
+    </div>
+    <div class='seacon' id='continue'>
+     <ul class="flex" id='slist'>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>AAA</div><img src='AAA'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   <li class="nav-item"><div class='sttl'>Black Clover</div><img src='https://cdn.myanimelist.net/images/anime/1426/94678l.jpg'/></li>
+   
+     </ul>
+    </div>
+   </header>
+</div>
+</div>
+<div class="seatab" id="list">
+<header>
+
+</header>
+</div>
+ 
+ <script>
+ const slider = document.querySelector('.scroll');
+ let isDown = false;
+ let startX;
+ let scrollLeft;
+ 
+ slider.addEventListener('mousedown', (e) => {
+   isDown = true;
+   startX = e.pageX - slider.offsetLeft;
+   scrollLeft = slider.scrollLeft;
+ });
+ slider.addEventListener('mouseleave', () => {
+   isDown = false;
+ });
+ slider.addEventListener('mouseup', () => {
+   isDown = false;
+ });
+ slider.addEventListener('mousemove', (e) => {
+   if(!isDown) return;
+   e.preventDefault();
+   const x = e.pageX - slider.offsetLeft;
+   const walk = (x - startX) * 3; //scroll-fast
+   slider.scrollLeft = scrollLeft - walk;
+   console.log(walk);
+ });
+ </script>
+ <script>
+    function filter() {
+     var input, filter, ul, li, a, i, txtValue;
+     input = document.getElementById("sinp");
+     filter = input.value.toUpperCase();
+     ul = document.getElementById("horiz");
+     li = ul.getElementsByTagName("li");
+     for (i = 0; i < li.length; i++) {
+         a = li[i].getElementsByTagName("div")[0];
+         txtValue = a.textContent || a.innerText || a.attributes[1].value;
+         if (txtValue.toUpperCase().indexOf(filter) > -1) {
+             li[i].style.display = "";
+         } else {
+             li[i].style.display = "none";
+         }
+     }
+ }
+    function sea(seaName,elmnt,color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("seatab");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("seasel");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.background = "";
+      }
+      document.getElementById(seaName).style.display = "block";
+      elmnt.style.background = color;
+    
+    }
+    function cal(calName,elmnt,color) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("seacon");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("seacli");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.background = "";
+      }
+      document.getElementById(calName).style.display = "block";
+      elmnt.style.background = color;
+    
+    }
+    document.getElementById("defsea").click();
+    document.getElementById("defnew").click();
+ </script>
+ <script>
+ $(document).ready(function(){
+  $(".seacli, seasel").click(function(){
+    $(".scroll").scrollLeft("0px")
+  });
+});
+ </script>
+ </body>
+ </html>
