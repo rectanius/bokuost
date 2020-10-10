@@ -1,4 +1,4 @@
-  .scroll ul {
+ .scroll ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -33,7 +33,7 @@
     display: inline-block;
     text-align: center;
   }
-  header {
+  loaf {
     background: #fcfcfc;
     min-width: 100%;
   }
